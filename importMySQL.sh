@@ -49,6 +49,6 @@ fi
 if command -v gunzip > /dev/null && (echo "$ARCHIVO_DB" | grep ".gz$" > /dev/null); then
 	gunzip < "$ARCHIVO_DB" | mysql $USUARIO_COMMAND $HOST $NOMBRE_DB && echo "Database $ARCHIVO_DB imported into $NOMBRE_DB"
 else
-	mysql $USUARIO_COMMAND $HOST $NOMBRE_DB && echo "Database $ARCHIVO_DB imported into $NOMBRE_DB"
+	mysql $USUARIO_COMMAND $HOST $NOMBRE_DB < "$ARCHIVO_DB" && echo "Database $ARCHIVO_DB imported into $NOMBRE_DB"
 fi
 
